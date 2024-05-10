@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+}
+  
+h1 {
+    @apply text-left font-medium;
+}
+
