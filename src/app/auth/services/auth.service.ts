@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, map, of, tap } from 'rxjs';
 import { AuthResponse } from '../interfaces/auth-response';
 import { environment } from '../../environments/environment';
+import { User } from '../interfaces/user';
 
 @Injectable({
     providedIn: 'root',
@@ -47,7 +48,8 @@ export class AuthService {
 
         const headers = new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`);
 
-        return this.http.get<boolean>(url, { headers }).pipe(
+        return this.http.get<User | null>(url, { headers }).pipe(
+            map(user => !!user),
             catchError(() => of(false))
         );
     }
