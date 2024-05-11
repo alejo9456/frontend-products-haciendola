@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent {
   constructor(
     private fb: UntypedFormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
   ) {}
 
   get email() {
@@ -37,7 +39,10 @@ export class LoginComponent {
       if (ok === true) {
         this.router.navigateByUrl('/dashboard');
       } else {
-        console.log('No puede ingresar');
+        this.snackBar.open('Email/password incorrecta', 'Cerrar', {
+          duration: 2000,
+          verticalPosition: 'top',
+      });
       }
     });
   }

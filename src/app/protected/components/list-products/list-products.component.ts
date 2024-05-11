@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 })
 export class ListProductsComponent implements OnInit {
   dataSource = new MatTableDataSource<Product>();
-  displayedColumns: string[] = ['id', 'titulo', 'stock', 'editar', 'eliminar'];
+  displayedColumns: string[] = ['id', 'title', 'stock', 'editar', 'eliminar'];
   totalProducts = 0;
   pageSize = 10;
   currentPage = 0;
