@@ -1,6 +1,6 @@
 <div class="p-16 rounded-lg">
-  <h1 class="text-center">Gestor de Productos<br />Haciendola</h1>
-  <h1 class="text-center text-sm">Login</h1>
+  <h1 class="text-center text-3xl mb-2">Gestor de Productos<br />Haciendola</h1>
+  <h2 class="text-center text-sm mb-2">Login</h2>
   <form
     class="flex flex-col"
     autocomplete="off"
@@ -8,7 +8,7 @@
     (ngSubmit)="login()"
   >
     <mat-form-field class="" appearance="fill">
-      <mat-label>Correo</mat-label>
+      <mat-label>Email</mat-label>
       <input
         matInput
         placeholder="Ej. user@haciendola.com"
@@ -36,7 +36,7 @@
         <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
     </mat-form-field>
-    <button mat-raised-button class="bg-rojo text-white" type="submit">
+    <button mat-raised-button class=" text-white" type="submit">
       Ingresar
     </button>
   </form>

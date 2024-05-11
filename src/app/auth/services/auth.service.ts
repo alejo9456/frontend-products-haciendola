@@ -10,6 +10,16 @@ import { User } from '../interfaces/user';
 })
 export class AuthService {
     private baseUrl: string = environment.baseUrl;
+    private _user: any;
+
+    private getHeaders(): HttpHeaders {
+        const token = this.getToken();
+        return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    }
+
+    get user() {
+        return this._user;
+    }
     
     constructor(private http: HttpClient) {}
 
@@ -43,13 +53,31 @@ export class AuthService {
         );
     }
 
+    getUserId(email: string): Observable<string> {
+        const url = `${this.baseUrl}/auth/users/${email}`;
+        const headers = this.getHeaders();
+        return this.http.get<any>(url,{ headers }).pipe(
+            catchError((error) => {
+                console.error('Error user not found:', error);
+                throw error;
+            })
+        );
+    }
+
     validateToken(): Observable<boolean> {
         const url = `${this.baseUrl}/auth/validate`;
 
         const headers = new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`);
 
         return this.http.get<User | null>(url, { headers }).pipe(
-            map(user => !!user),
+            map(user => {
+                if (user && user.email) {
+                    this._user = user.email;
+                    return true;
+                } else {
+                    return false;
+                }
+            }),
             catchError(() => of(false))
         );
     }
@@ -61,4 +89,5 @@ export class AuthService {
     logout(): void {
         localStorage.removeItem('token');
     }
+
 }
