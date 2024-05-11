@@ -10,6 +10,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [],
@@ -18,14 +24,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   ],
   exports:[
     MatFormFieldModule,
+    MatProgressSpinnerModule,
     MatButtonModule,
+    MatSnackBarModule,
     MatTableModule,
+    MatTreeModule,
+    MatDialogModule,
     MatIconModule,
     MatInputModule,
     MatTabsModule,
     MatCardModule,
     MatPaginatorModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatProgressBarModule
   ]
 })
 export class AngularMaterialModule { }
